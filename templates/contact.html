@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Personal Profile{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="text-center mb-5">Contact Me</h1>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="mb-4">
+                    <h4>Email</h4>
+                    <p><a href="mailto:{{ contact.email }}" class="text-decoration-none">{{ contact.email }}</a></p>
+                </div>
+
+                <div class="mb-4">
+                    <h4>LinkedIn</h4>
+                    <p><a href="{{ contact.linkedin }}" target="_blank" class="text-decoration-none">{{ contact.linkedin }}</a></p>
+                </div>
+
+                <div class="mb-4">
+                    <h4>GitHub</h4>
+                    <p><a href="{{ contact.github }}" target="_blank" class="text-decoration-none">{{ contact.github }}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

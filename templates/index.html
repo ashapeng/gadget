@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ profile.name }} - Personal Profile{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="text-center mb-5">
+            <h1 class="display-4">{{ profile.name }}</h1>
+            <h2 class="text-muted">{{ profile.title }}</h2>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">About Me</h3>
+                <p class="card-text">{{ profile.bio }}</p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Skills</h3>
+                <div class="row">
+                    {% for skill in profile.skills %}
+                    <div class="col-md-4 mb-2">
+                        <div class="badge bg-primary p-2">{{ skill }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="{{ url_for('projects') }}" class="btn btn-primary me-2">View Projects</a>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline-primary">Contact Me</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - Personal Profile{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h1 class="text-center mb-5">My Projects</h1>
+
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ project.name }}</h3>
+                        <p class="card-text">{{ project.description }}</p>
+                        <h5>Technologies Used:</h5>
+                        <div class="mb-3">
+                            {% for tech in project.technologies %}
+                            <span class="badge bg-secondary me-1">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

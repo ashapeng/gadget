@@ -9,29 +9,29 @@ app = Flask(__name__)
 
 # Sample profile data - you can modify this according to your needs
 profile_data = {
-    "name": "Your Name",
-    "title": "Your Professional Title",
-    "bio": "A brief description about yourself and your professional journey.",
+    "name": "Peng A",
+    "title": "Founder",
+    "bio": "I am a recent PhD graduate from McGill University. I am interested in using AI to help students.",
     "skills": [
         "Python", "Flask", "HTML/CSS", "JavaScript",
         "Git", "Database Management", "API Development"
     ],
     "projects": [
         {
-            "name": "Project 1",
-            "description": "Description of your first project",
-            "technologies": ["Python", "Flask", "SQLAlchemy"]
+            "name": "High-throughput Image segmentation&Analysis",
+            "description": "This is associated with my PhD research. I developed a high-throughput image segmentation and analysis pipeline for Nucleolus in C.elegans.",
+            "technologies": ["Python", "ImageJ"]
         },
         {
-            "name": "Project 2",
+            "name": "Startup:Gradually",
             "description": "Description of your second project",
-            "technologies": ["JavaScript", "React", "Node.js"]
+            "technologies": ["Python", "Flask", "HTML/CSS", "JavaScript", "React", "Node.js"]
         }
     ],
     "contact": {
         "email": "your.email@example.com",
-        "linkedin": "https://linkedin.com/in/yourprofile",
-        "github": "https://github.com/yourusername"
+        "linkedin": "https://www.linkedin.com/in/peng-a-3065018b/",
+        "github": "https://github.com/ashapeng"
     }
 }
 

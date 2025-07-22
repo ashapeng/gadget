@@ -13,3 +13,11 @@ scipy==1.11.3
 
 # Add your project dependencies here, one per line
 # e.g., numpy==1.23.0 
+typing-extensions>=4.0.0
+
+# RNA Structure Analysis Dependencies
+opencv-python==4.8.1.78
+numpy==1.24.3
+Pillow==10.0.1
+matplotlib==3.7.2
+scipy==1.11.3

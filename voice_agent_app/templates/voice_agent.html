@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voice Agent</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script>
+        let recognition;
+        function startListening() {
+            if (!('webkitSpeechRecognition' in window)) {
+                alert('Speech recognition not supported.');
+                return;
+            }
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('transcript').value = transcript;
+                analyzeTranscript(transcript);
+            };
+            recognition.start();
+        }
+        function analyzeTranscript(text) {
+            fetch('/api/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('analysis').innerText =
+                    `Mood: ${data.mood}\nTone: ${data.tone}\nMeaning: ${data.underlying_meaning}\nSuggestion: ${data.suggestion}`;
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Voice Agent</h1>
+    <button onclick="startListening()">Start Listening</button>
+    <br><br>
+    <textarea id="transcript" rows="3" cols="60" placeholder="Transcript will appear here..."></textarea>
+    <br><br>
+    <pre id="analysis"></pre>
+</body>
+</html>

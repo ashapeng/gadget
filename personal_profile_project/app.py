@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 import os
 
@@ -6,6 +6,9 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
+
+# Import the voice agent analyzer
+from modules.voice_agent.analyze import analyze_conversation
 
 # Sample profile data - you can modify this according to your needs
 profile_data = {
@@ -38,6 +41,20 @@ profile_data = {
 @app.route('/')
 def home():
     return render_template('index.html', profile=profile_data)
+
+# Voice agent page
+@app.route('/voice-agent')
+def voice_agent():
+    return render_template('voice_agent.html')
+
+# API endpoint for voice agent analysis
+@app.route('/api/voice-agent/analyze', methods=['POST'])
+def voice_agent_analyze():
+    data = request.get_json()
+    text = data.get('text', '')
+    audio_features = data.get('audio_features', None)
+    result = analyze_conversation(text, audio_features)
+    return jsonify(result)
 
 @app.route('/projects')
 def projects():
